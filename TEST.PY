@@ -7,14 +7,14 @@ scope = [
   'https://spreadsheets.google.com/feeds',
   'https://www.googleapis.com/auth/drive',
 ]
-creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret1.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('client-secret.json', scope)
 client = gspread.authorize(creds)
 
-sheet = client.open("TEST of HubSpot - IC On-Boarding Form Submissions").sheet1
+sheet = client.open("zillow_properties_sheet").sheet1
 
 # Extract and print all of the values
 list_of_hashes = sheet.get_all_records()
-
+print(len(list_of_hashes))
 row = ["I'm","inserting","a","row","into","a,","Spreadsheet","with","Python"]
 index = len(list_of_hashes) + 2
 sheet.insert_row(row, index)
